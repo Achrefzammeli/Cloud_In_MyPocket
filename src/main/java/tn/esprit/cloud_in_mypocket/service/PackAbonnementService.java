@@ -1,7 +1,7 @@
 package tn.esprit.cloud_in_mypocket.service;
 
-import com.example.gestionuser.entity.PackAbonnement;
-import com.example.gestionuser.repository.PackAbonnementRepository;
+import tn.esprit.cloud_in_mypocket.entity.PackAbonnement;
+import tn.esprit.cloud_in_mypocket.repository.PackAbonnementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

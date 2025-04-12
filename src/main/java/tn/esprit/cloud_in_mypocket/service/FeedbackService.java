@@ -1,7 +1,7 @@
 package tn.esprit.cloud_in_mypocket.service;
 
-import com.example.gestionuser.entity.Feedback;
-import com.example.gestionuser.repository.FeedbackRepository;
+import tn.esprit.cloud_in_mypocket.entity.Feedback;
+import tn.esprit.cloud_in_mypocket.repository.FeedbackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

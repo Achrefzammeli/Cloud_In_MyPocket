@@ -1,6 +1,6 @@
 package tn.esprit.cloud_in_mypocket.repository;
 
-import com.example.gestionuser.entity.SubscriptionHistory;
+import tn.esprit.cloud_in_mypocket.entity.SubscriptionHistory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

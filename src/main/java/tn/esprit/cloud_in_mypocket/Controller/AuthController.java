@@ -1,8 +1,8 @@
 package tn.esprit.cloud_in_mypocket.Controller;
 
-import com.example.gestionuser.entity.User;
-import com.example.gestionuser.payload.LoginRequest;
-import com.example.gestionuser.repository.UserRepository;
+import tn.esprit.cloud_in_mypocket.entity.User;
+import tn.esprit.cloud_in_mypocket.payload.LoginRequest;
+import tn.esprit.cloud_in_mypocket.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;

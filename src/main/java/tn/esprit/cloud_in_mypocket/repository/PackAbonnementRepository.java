@@ -1,6 +1,6 @@
 package tn.esprit.cloud_in_mypocket.repository;
 
-import com.example.gestionuser.entity.PackAbonnement;
+import tn.esprit.cloud_in_mypocket.entity.PackAbonnement;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

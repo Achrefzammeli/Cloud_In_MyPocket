@@ -1,7 +1,7 @@
 package tn.esprit.cloud_in_mypocket.service;
 
-import com.example.gestionuser.entity.User;
-import com.example.gestionuser.repository.UserRepository;
+import tn.esprit.cloud_in_mypocket.entity.User;
+import tn.esprit.cloud_in_mypocket.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

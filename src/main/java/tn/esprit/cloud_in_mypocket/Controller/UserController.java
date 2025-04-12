@@ -1,9 +1,9 @@
 package tn.esprit.cloud_in_mypocket.Controller;
 
 
-import com.example.gestionuser.dto.ResponseDTO;
-import com.example.gestionuser.entity.User;
-import com.example.gestionuser.service.UserService;
+import tn.esprit.cloud_in_mypocket.dto.ResponseDTO;
+import tn.esprit.cloud_in_mypocket.entity.User;
+import tn.esprit.cloud_in_mypocket.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

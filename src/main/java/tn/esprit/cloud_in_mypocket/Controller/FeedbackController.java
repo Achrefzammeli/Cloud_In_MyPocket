@@ -1,6 +1,6 @@
 package tn.esprit.cloud_in_mypocket.Controller;
-import com.example.gestionuser.entity.Feedback;
-import com.example.gestionuser.service.FeedbackService;
+import tn.esprit.cloud_in_mypocket.entity.Feedback;
+import tn.esprit.cloud_in_mypocket.service.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
