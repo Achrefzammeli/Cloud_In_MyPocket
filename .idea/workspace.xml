@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b9235081-40c2-4cbe-b29b-606ad1e08003" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Controller/ApprenantController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Controller/FormateurController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Controller/FormationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Controller/ReservationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Controller/SeanceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Entities/Apprenant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Entities/Formateur.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Entities/Formation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Entities/Reservation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Entities/Seance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/MyApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Repositories/ApprenantRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Repositories/FormateurRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Repositories/FormationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Repositories/ReservationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Repositories/SeanceRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Service/ApprenantService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Service/FormateurService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Service/FormationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Service/ReservationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Service/SeanceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2uByNKCS2ZMlSpNrQ3luK4OB0fc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="false" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/maiss/Downloads/trainer&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;2c065aae9fcb37b49043a5a2012b3dbf&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="" />
+      <recent name="org" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn spring-boot:build-image" />
+      <command value="mvn dependency:tree | grep spring-context" />
+      <command value="mvn dependency:tree -Dincludes=org.springframework*" />
+      <command value="mvn dependency:tree -Dincludes=org.springframework:spring-context" />
+      <command value="mvn org.apache.maven.plugins:maven-compiler-plugin:compile " />
+      <command value="mvn org.apache.maven.plugins:maven-compiler-plugin:2.0.2:compile " />
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.MyApplication">
+    <configuration name="All in generated-requests" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="3" requestIdentifier="#3" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="4" requestIdentifier="#4" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="first_project" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="MyApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="trainer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="app.MyApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value=".*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.MyApplication" />
+        <item itemvalue="HTTP Request.generated-requests | #3" />
+        <item itemvalue="HTTP Request.generated-requests | #4" />
+        <item itemvalue="HTTP Request.All in generated-requests" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b9235081-40c2-4cbe-b29b-606ad1e08003" name="Changes" comment="" />
+      <created>1741736221801</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1741736221801</updated>
+      <workItem from="1741736223241" duration="751000" />
+      <workItem from="1741741275228" duration="265000" />
+      <workItem from="1741741569073" duration="790000" />
+      <workItem from="1741745591964" duration="130000" />
+      <workItem from="1741766066328" duration="1379000" />
+      <workItem from="1741767611995" duration="5249000" />
+      <workItem from="1742160518922" duration="51000" />
+      <workItem from="1744119110878" duration="4629000" />
+      <workItem from="1744201704470" duration="3242000" />
+      <workItem from="1744216183633" duration="1576000" />
+      <workItem from="1744229405455" duration="1844000" />
+      <workItem from="1744232824765" duration="6234000" />
+      <workItem from="1744274476217" duration="2643000" />
+      <workItem from="1744282909986" duration="597000" />
+      <workItem from="1744318961543" duration="1342000" />
+      <workItem from="1744401113178" duration="1986000" />
+      <workItem from="1744455068774" duration="2982000" />
+      <workItem from="1744468580537" duration="2442000" />
+      <workItem from="1744484760826" duration="6766000" />
+      <workItem from="1744550007324" duration="1257000" />
+      <workItem from="1744555546488" duration="2644000" />
+      <workItem from="1744620327489" duration="1091000" />
+      <workItem from="1744660975864" duration="26000" />
+      <workItem from="1744662169850" duration="623000" />
+      <workItem from="1744667508537" duration="18000" />
+      <workItem from="1744721493102" duration="4451000" />
+      <workItem from="1744745073567" duration="4099000" />
+      <workItem from="1744792212452" duration="956000" />
+      <workItem from="1744793296991" duration="7499000" />
+      <workItem from="1744828456290" duration="10318000" />
+      <workItem from="1744879379379" duration="4448000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

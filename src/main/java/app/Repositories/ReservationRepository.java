@@ -1,0 +1,16 @@
+package app.Repositories;
+
+import app.Entities.Reservation;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface ReservationRepository extends JpaRepository<Reservation, Long> {
+    long countByFormationId(Long formationId);
+    @Query("SELECT r.formation.id, COUNT(r) FROM Reservation r GROUP BY r.formation.id")
+    List<Object[]> countReservationsByFormation();
+
+}

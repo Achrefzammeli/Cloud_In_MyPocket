@@ -1,0 +1,44 @@
+package app.Service;
+
+import app.Entities.Formateur;
+import app.Repositories.FormateurRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class FormateurService {
+    @Autowired
+    private FormateurRepository formateurRepository;
+
+    public List<Formateur> getAllFormateurs() {
+        return formateurRepository.findAll();
+    }
+
+    public Formateur getFormateurById(Long id) {
+        return formateurRepository.findById(id).orElse(null);
+    }
+
+    public Formateur createFormateur(Formateur formateur) {
+        return formateurRepository.save(formateur);
+    }
+
+    public Formateur updateFormateur(Long id, Formateur updatedFormateur) {
+        Formateur existing = formateurRepository.findById(id).orElse(null);
+        if (existing != null) {
+            existing.setName(updatedFormateur.getName());
+            existing.setName(updatedFormateur.getName());
+            existing.setLastname(updatedFormateur.getLastname());
+
+            // update other fields as needed
+            return formateurRepository.save(existing);
+        }
+        return null;
+    }
+
+    public void deleteFormateur(Long id) {
+        formateurRepository.deleteById(id);
+    }
+}
+
