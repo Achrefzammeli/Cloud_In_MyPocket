@@ -1,10 +1,8 @@
 package tn.esprit.cloud_in_mypocket.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -23,14 +21,19 @@ public class PackAbonnement {
     private String nom; // Exemple : "Pack Basique", "Pack Premium"
     private String description; // Description du pack
     private double prix; // Prix du pack
+    private String prixMensuel;
+    private  String  prixAnnuel;
     private int duree; // Durée en jours
     @Enumerated(EnumType.STRING) // Stocker le type de pack sous forme de chaîne
     private PackType type; // Silver, Gold, Platinum
     // Relation avec l'entité User (un pack peut être souscrit par plusieurs utilisateurs)
-    @OneToMany(mappedBy = "packAbonnement", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "packAbonnement", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<User> users;
 
+
     // Relation avec l'entité Feedback (un pack peut avoir plusieurs feedbacks)
-    @OneToMany(mappedBy = "packAbonnement", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Feedback> feedbacks;
+   /* @OneToMany(mappedBy = "packAbonnement", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Feedback> feedbacks;*/
+
 }

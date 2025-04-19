@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/packs")
@@ -18,10 +19,12 @@ public class PackAbonnementController {
     private PackAbonnementService packAbonnementService;
 
     @PostMapping
-    public ResponseEntity<PackAbonnement> createPack(@RequestBody PackAbonnement packAbonnement) {
-        PackAbonnement savedPack = packAbonnementService.savePack(packAbonnement);
-        return ResponseEntity.ok(savedPack);
+    public ResponseEntity<ResponseDTO> createPack(@RequestBody PackAbonnement packAbonnement) {
+        packAbonnementService.savePack(packAbonnement);
+        ResponseDTO response = new ResponseDTO("success", "Pack created successfully");
+        return ResponseEntity.ok(response);
     }
+
 
     @GetMapping
     public List<PackAbonnement> getAllPacks() {
@@ -41,4 +44,18 @@ public class PackAbonnementController {
         ResponseDTO response = new ResponseDTO("success", "Pack deleted successfully");
         return ResponseEntity.ok(response);
     }
+    @GetMapping("/stats")
+    public ResponseEntity<ResponseDTO> getStatistiques() {
+        Map<String, Long> stats = packAbonnementService.getNombreUtilisateursParType();
+        ResponseDTO response = new ResponseDTO("success", "Statistiques récupérées avec succès", stats);
+        return ResponseEntity.ok(response);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<ResponseDTO> updatePack(@PathVariable Long id, @RequestBody PackAbonnement updatedPack) {
+        packAbonnementService.updatePack(id, updatedPack);
+        ResponseDTO response = new ResponseDTO("success", "Pack updated successfully");
+        return ResponseEntity.ok(response);
+    }
+
+
 }
