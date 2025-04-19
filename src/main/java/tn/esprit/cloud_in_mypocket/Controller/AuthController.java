@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Optional;
 
@@ -34,6 +35,10 @@ public class AuthController {
         if (!passwordEncoder.matches(loginRequest.getMotDePasse(), user.getMotDePasse())) {
             return ResponseEntity.status(401).body(Collections.singletonMap("error", "Mot de passe incorrect"));
         }
+
+        // Mise à jour de la date de dernière connexion
+        user.setLastLoginDate(LocalDateTime.now());
+        userRepository.save(user);
 
         // Hide the password before sending the user
         user.setMotDePasse(null);

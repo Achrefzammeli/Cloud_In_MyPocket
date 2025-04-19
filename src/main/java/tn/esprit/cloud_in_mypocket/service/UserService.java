@@ -1,5 +1,6 @@
 package tn.esprit.cloud_in_mypocket.service;
 
+import tn.esprit.cloud_in_mypocket.entity.Role;
 import tn.esprit.cloud_in_mypocket.entity.User;
 import tn.esprit.cloud_in_mypocket.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,12 @@ public class UserService {
             String hashedPassword = passwordEncoder.encode(user.getMotDePasse());
             user.setMotDePasse(hashedPassword);
         }
+        
+        // Ensure role is set
+        if (user.getRole() == null) {
+            user.setRole(Role.CLIENT);
+        }
+        
         return userRepository.save(user);
     }
 
@@ -45,4 +52,5 @@ public class UserService {
         }
         userRepository.deleteById(id);
     }
+
 }

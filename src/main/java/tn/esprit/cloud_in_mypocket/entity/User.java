@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -25,9 +26,19 @@ public class User {
     private String email;
     private String motDePasse;
     private String numeroDeTelephone;
-    private String role;
+    
+    @Enumerated(EnumType.STRING)
+    private Role role;
+    
     private Long lawFirmId;
     private String adresseLivraison;
+    //deux colonnes last login w isactive
+
+    @Column(name = "last_login_date")
+    private LocalDateTime lastLoginDate;
+
+    @Column(name = "is_active", nullable = false)
+    private boolean isActive = true;
 
     // Relation avec PackAbonnement (un utilisateur peut souscrire à un pack)
     @ManyToOne
@@ -41,8 +52,12 @@ public class User {
     private List<SubscriptionHistory> subscriptionHistory; // Historique des souscriptions
     @PrePersist
     public void prePersist() {
-        if (role == null || role.trim().isEmpty()) {
-            role = "CLIENT";
+        if (role == null) {
+            role = Role.CLIENT;
+        }
+        //ken l user yaadi pack
+        if (lastLoginDate == null) {
+            lastLoginDate = LocalDateTime.now();
         }
     }
 }
