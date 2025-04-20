@@ -34,9 +34,12 @@ public class SecurityConfig {
                         .requestMatchers("/api/test/**").permitAll()
                         // Autorise toutes les requêtes GET sur /api/users et ses sous-chemins
                         .requestMatchers(HttpMethod.GET, "/api/users/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/packs/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/packs/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/api/packs/**").permitAll()
                         // Autorise toutes les requêtes DELETE sur /api/users et ses sous-chemins
                         .requestMatchers(HttpMethod.DELETE, "/api/users/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/feedbacks").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/packs/**").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/api/users/**").permitAll()
                         // Toute autre requête doit être authentifiée
                         .anyRequest().authenticated()

@@ -72,7 +72,7 @@ public class PackAbonnementService {
         }
     }
 
-    @Scheduled(cron = "0 0/1 * * * *") // Exécute chaque début d'heure
+    @Scheduled(cron = "0 0/30 * * * *") // Exécute chaque début d'heure
     public void verifierPacksSansUtilisateurs() {
         List<PackAbonnement> packs = packAbonnementRepository.findAll();
         List<PackAbonnement> packsVides = packs.stream()
