@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -22,10 +23,21 @@ target/
 .sts4-cache
 
 ### NetBeans ###
+=======
+HELP.md
+target/
+
+.classpath
+.project
+.springBeans
+.sts4-cache
+
+>>>>>>> mayssa
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
+<<<<<<< HEAD
 /.nb-gradle/
 build/
 !**/src/main/**/build/
@@ -36,3 +48,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+=======
+
+.vscode/
+>>>>>>> mayssa
