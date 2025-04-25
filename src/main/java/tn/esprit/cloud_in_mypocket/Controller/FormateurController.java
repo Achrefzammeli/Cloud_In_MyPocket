@@ -9,7 +9,7 @@ import tn.esprit.cloud_in_mypocket.service.FormateurService;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 @RequestMapping("/api")
 public class FormateurController {
 

@@ -19,7 +19,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/reservations")
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 public class ReservationController {
     @Autowired
     private ReservationRepository reservationRepository;

@@ -13,7 +13,7 @@ import tn.esprit.cloud_in_mypocket.service.EmailServicemaissa;
 import java.util.List;
 
 @RestController
-@RequestMapping("/apprenants")
+//@RequestMapping("/apprenants")
 @CrossOrigin(origins = "*")
 public class ApprenantController {
 

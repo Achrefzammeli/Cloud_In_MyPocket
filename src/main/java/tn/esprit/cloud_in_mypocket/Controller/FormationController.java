@@ -12,7 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/formations")
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 public class FormationController{
 
     @Autowired

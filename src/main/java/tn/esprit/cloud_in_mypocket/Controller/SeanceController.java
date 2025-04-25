@@ -15,7 +15,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/seances")
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 public class SeanceController {
     @Autowired
     private PdfGeneratorService pdfGeneratorService;
