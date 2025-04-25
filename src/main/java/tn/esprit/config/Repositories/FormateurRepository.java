@@ -1,6 +1,6 @@
-package app.Repositories;
+package tn.Repositories;
 
-import app.Entities.Formateur;
+import tn.Entities.Formateur;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

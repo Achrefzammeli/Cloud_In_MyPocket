@@ -1,8 +1,10 @@
-package app.Controller;
+package tn.Controller;
 
-import app.Entities.Apprenant;
-import app.Repositories.ApprenantRepository;
-import app.Service.ApprenantService;
+import tn.Entities.Apprenant;
+import tn.Repositories.ApprenantRepository;
+import tn.Repositories.SeanceRepository;
+import tn.Service.ApprenantService;
+import tn.Service.EmailServicemaissa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +18,10 @@ public class ApprenantController {
     @Autowired
     private ApprenantService apprenantService;
     private ApprenantRepository apprenantRepository;
+    @Autowired
+    private EmailServicemaissa emailServicemaissa;
+    @Autowired
+    private SeanceRepository seanceRepository;
 
     @GetMapping
     public List<Apprenant> getAll() {
@@ -41,4 +47,7 @@ public class ApprenantController {
     public void delete(@PathVariable Long id) {
         apprenantService.deleteApprenant(id);
     }
+
 }
+
+

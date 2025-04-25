@@ -1,7 +1,7 @@
-package app.Service;
+package tn.Service;
 
-import app.Entities.Formation;
-import app.Repositories.FormationRepository;
+import tn.Entities.Formation;
+import tn.Repositories.FormationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,4 +38,12 @@ public class FormationService {
     public void deleteFormation(Long id) {
         formationRepository.deleteById(id);
     }
+
+    public List<String> getAllFormationTitres() {
+        return formationRepository.findAll()
+                .stream()
+                .map(Formation::getTitre)
+                .toList();
+    }
+
 }

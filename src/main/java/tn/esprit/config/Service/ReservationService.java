@@ -1,7 +1,9 @@
-package app.Service;
+package tn.Service;
 
-import app.Entities.Reservation;
-import app.Repositories.ReservationRepository;
+import tn.Entities.Reservation;
+import tn.Repositories.ApprenantRepository;
+import tn.Repositories.ReservationRepository;
+import tn.Repositories.SeanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +13,14 @@ import java.util.List;
 public class ReservationService {
     @Autowired
     private ReservationRepository reservationRepository;
-
+    @Autowired
+    private SeanceService seanceService;
+    @Autowired
+    private SeanceRepository seanceRepository;
+    @Autowired
+    private EmailServicemaissa emailServicemaissa;
+@Autowired
+private ApprenantRepository apprenantRepository;
     public List<Reservation> getAllReservations() {
         return reservationRepository.findAll();
     }
@@ -37,4 +46,9 @@ public class ReservationService {
     public void deleteReservation(Long id) {
         reservationRepository.deleteById(id);
     }
-}
+
+
+    }
+
+
+

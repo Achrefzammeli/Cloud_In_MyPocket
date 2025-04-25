@@ -1,7 +1,7 @@
-package app.Controller;
+package tn.Controller;
 
-import app.Entities.Formateur;
-import app.Service.FormateurService;
+import tn.Entities.Formateur;
+import tn.Service.FormateurService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

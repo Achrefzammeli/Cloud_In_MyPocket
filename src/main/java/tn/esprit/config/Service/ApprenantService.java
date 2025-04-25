@@ -1,11 +1,14 @@
-package app.Service;
+package tn.Service;
 
-
-import app.Entities.Apprenant;
-import app.Repositories.ApprenantRepository;
+import tn.Entities.Apprenant;
+import tn.Repositories.ApprenantRepository;
+import tn.Repositories.ReservationRepository;
+import tn.Repositories.SeanceRepository;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +19,18 @@ public class ApprenantService {
 
     @Autowired
     private ApprenantRepository apprenantRepository;
+    @Autowired
+    @Lazy  // Lazy initialization of SeanceService to avoid circular dependency
+
+    private SeanceService seanceService;
+    @Autowired
+    private SeanceRepository seanceRepository;
+    @Autowired
+    private ReservationRepository reservationRepository;
+    @Autowired
+    private EmailServicemaissa emailServicemaissa;
+    @Autowired
+    private JavaMailSender javaMailSender;
 
     public List<Apprenant> getAllApprenants() {
         return apprenantRepository.findAll();
@@ -33,7 +48,7 @@ public class ApprenantService {
         Apprenant existing = apprenantRepository.findById(id).orElse(null);
         if (existing != null) {
             existing.setNom(update.getNom());
-            existing.setNom(update.getNom());
+            existing.setEmail(update.getEmail()); // si tu veux aussi mettre à jour l'email par exemple
             return apprenantRepository.save(existing);
         }
         return null;
@@ -42,6 +57,7 @@ public class ApprenantService {
     public void deleteApprenant(Long id) {
         apprenantRepository.deleteById(id);
     }
+
 
 }
 

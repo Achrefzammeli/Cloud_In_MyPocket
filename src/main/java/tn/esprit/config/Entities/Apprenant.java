@@ -1,4 +1,4 @@
-package app.Entities;
+package tn.Entities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -26,11 +26,14 @@ public class Apprenant {
         }
         return reservation;
     }
+
+
     public Long getId() {
         return id;
     }
     @OneToMany(mappedBy = "apprenant", cascade = CascadeType.ALL)
     private List<Reservation> reservation = new ArrayList<>();
+
 
 
     public void setId(Long id) {
@@ -52,5 +55,8 @@ public class Apprenant {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
+
 
 }

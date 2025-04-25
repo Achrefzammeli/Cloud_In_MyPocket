@@ -1,7 +1,7 @@
-package app.Service;
+package tn.Service;
 
-import app.Entities.Formateur;
-import app.Repositories.FormateurRepository;
+import tn.Entities.Formateur;
+import tn.Repositories.FormateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,12 +1,13 @@
-package app.Controller;
+package tn.Controller;
 
-import app.Entities.Apprenant;
-import app.Entities.Formation;
-import app.Entities.Reservation;
-import app.Repositories.ApprenantRepository;
-import app.Repositories.FormationRepository;
-import app.Repositories.ReservationRepository;
-import app.Service.ReservationService;
+import tn.Entities.Apprenant;
+import tn.Entities.Formation;
+import tn.Entities.Reservation;
+import tn.Repositories.ApprenantRepository;
+import tn.Repositories.FormationRepository;
+import tn.Repositories.ReservationRepository;
+import tn.Service.EmailServicemaissa;
+import tn.Service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,8 @@ import java.util.Optional;
 public class ReservationController {
     @Autowired
     private ReservationRepository reservationRepository;
+    @Autowired
+    private EmailServicemaissa emailServicemaissa;
 
     @Autowired
     private FormationRepository formationRepository;
@@ -43,29 +46,57 @@ public class ReservationController {
     }
 
     @PostMapping
-    public ResponseEntity<Reservation> createReservation(@RequestBody Map<String, Object> data) {
+    public ResponseEntity<?> createReservation(@RequestBody Map<String, Object> data) {
+
         String nom = (String) data.get("nom");
         String email = (String) data.get("email");
         Long formationId = Long.parseLong(data.get("formationId").toString());
 
-        Optional<Formation> formation = formationRepository.findById(formationId);
-        if (formation.isEmpty()) return ResponseEntity.notFound().build();
+        Optional<Formation> formationOpt = formationRepository.findById(formationId);
+        if (formationOpt.isEmpty()) return ResponseEntity.notFound().build();
 
+        Formation formation = formationOpt.get();
+
+        // Vérifier si des places sont encore disponibles
+        long existingReservations = reservationRepository.countByFormationId(formationId);
+        if (existingReservations >= formation.getnombreplaces()) {
+            Map<String, String> error = new HashMap<>();
+            error.put("error", "Il n'y a plus de places disponibles pour cette formation.");
+            return ResponseEntity.badRequest().body(error);
+        }
+
+        // Enregistrer l'apprenant
         Apprenant apprenant = new Apprenant();
         apprenant.setNom(nom);
         apprenant.setEmail(email);
         apprenantRepository.save(apprenant);
 
+        // Créer la réservation
         Reservation reservation = new Reservation();
         reservation.setApprenant(apprenant);
-        reservation.setFormation(formation.get());
+        reservation.setFormation(formation);
         reservationRepository.save(reservation);
 
+        // ✅ Envoyer l'e-mail de confirmation
+        emailServicemaissa.sendConfirmationEmailmaissa(apprenant.getEmail(), formation.getTitre());
+
+
         return ResponseEntity.ok(reservation);
+
     }
 
+    @GetMapping("/test-email")
+    public ResponseEntity<String> testEmail() {
+        try {
+            emailServicemaissa.sendConfirmationEmailmaissa("mayssahammami2704@gmail.com", "Formation Test Email");
+            return ResponseEntity.ok("✅ Email envoyé avec succès !");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body("❌ Erreur lors de l'envoi de l'email : " + e.getMessage());
+        }
+    }
 
-    @GetMapping("/formation/{id}/count")
+    @GetMapping("/formation/count")
     public ResponseEntity<Map<Long, Long>> getReservationCountsPerFormation() {
         List<Formation> formations = formationRepository.findAll();
         Map<Long, Long> counts = new HashMap<>();
@@ -89,6 +120,11 @@ public class ReservationController {
         return result;
     }
 
+    @GetMapping("/formation/{id}/count")
+    public ResponseEntity<Long> getReservationCountForFormation(@PathVariable Long id) {
+        long count = reservationRepository.countByFormationId(id);
+        return ResponseEntity.ok(count);
+    }
 
 
 
@@ -104,4 +140,5 @@ public class ReservationController {
     public void delete(@PathVariable Long id) {
         reservationService.deleteReservation(id);
     }
+
 }

@@ -1,4 +1,4 @@
-package app.Entities;
+package tn.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -18,10 +18,16 @@ public class Reservation {
     @JsonIgnore // Prevents infinite recursion
 
     private Apprenant apprenant;
+    private boolean isCompleted = false;
+
 
     @ManyToOne
     @JoinColumn(name = "formation_id")
     private Formation formation;
+
+    @Column(nullable = false)
+    private boolean completed = false;
+
     public Apprenant getApprenant() {
         return apprenant;
     }
@@ -45,4 +51,12 @@ public class Reservation {
     public void setId(Long id) {
         this.id = id;
     }
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
 }

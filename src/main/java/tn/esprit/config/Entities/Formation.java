@@ -1,6 +1,5 @@
-package app.Entities;
+package tn.Entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,6 +18,8 @@ public class Formation {
     private Long id;
 
     private String titre;
+    private int nombreplaces;
+
     private LocalDate dateDebut;
     private LocalDate dateFin;
     private String description;
@@ -35,6 +36,16 @@ public class Formation {
     @OneToMany(mappedBy = "formation")
 
     private List<Reservation> reservations;
+    private int placesdisponibles; // on va diminuer celui-là
+
+    // Getters & Setters
+    public int getPlacesdisponibles() {
+        return placesdisponibles;
+    }
+
+    public void setPlacesdisponibles(int placesdisponibles) {
+        this.placesdisponibles = placesdisponibles;
+    }
     public Long getId() {
         return id;
     }
@@ -70,6 +81,12 @@ public class Formation {
     }
     public LocalDate getDateFin() {
         return dateFin;
+    }
+    public void setnombreplaces(int nombreplaces) {
+        this.nombreplaces = nombreplaces;
+    }
+    public int getnombreplaces() {
+        return nombreplaces;
     }
 
 }
