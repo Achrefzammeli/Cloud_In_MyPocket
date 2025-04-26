@@ -6,13 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
 @Table(name = "users")
 public class User {
 
@@ -25,24 +26,44 @@ public class User {
     private String email;
     private String motDePasse;
     private String numeroDeTelephone;
-    private String role;
+    private String resetCode;
+
+
+    // ✅ 2FA
+    private String verificationCode;
+    private Boolean emailVerified = false;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     private Long lawFirmId;
     private String adresseLivraison;
 
-    // Relation avec PackAbonnement (un utilisateur peut souscrire à un pack)
+    @Column(name = "last_login_date")
+    private LocalDateTime lastLoginDate;
+
+    @Column(name = "photo", nullable = true)
+    private String photo;
+
+    // ✅ Renommé "active" pour éviter conflits avec "isActive"
+    @Column(name = "is_active", nullable = false)
+    private Boolean active = true;
+
     @ManyToOne
     @JoinColumn(name = "pack_abonnement_id")
     private PackAbonnement packAbonnement;
 
-    // Relation avec Feedback (un utilisateur peut laisser plusieurs feedbacks)
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Feedback> feedbacks;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<SubscriptionHistory> subscriptionHistory; // Historique des souscriptions
+    private List<SubscriptionHistory> subscriptionHistory;
+
     @PrePersist
     public void prePersist() {
-        if (role == null || role.trim().isEmpty()) {
-            role = "CLIENT";
+        if (role == null) {
+            role = Role.CLIENT;
+        }
+        if (lastLoginDate == null) {
+            lastLoginDate = LocalDateTime.now();
         }
     }
 }
