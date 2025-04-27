@@ -25,7 +25,7 @@ public class PdfGeneratorService {
         Document document = new Document(pdf, PageSize.A4.rotate());
 
         try {
-            // Add background image (now using 0.png)
+            // Add background image
             String imagePath = "src/main/resources/static/0.png";
             Image bg = new Image(ImageDataFactory.create(imagePath));
             bg.setFixedPosition(0, 0);
