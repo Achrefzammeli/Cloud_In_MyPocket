@@ -1,27 +1,28 @@
 package tn.esprit.cloud_in_mypocket.Controller;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import tn.esprit.cloud_in_mypocket.entity.Paiement;
 import tn.esprit.cloud_in_mypocket.service.SubscriptionNotificationService;
+import tn.esprit.cloud_in_mypocket.dto.ResponseDTO;
 
 @RestController
-@RequestMapping("/api/subscription-notifications")
-@RequiredArgsConstructor
+@RequestMapping("/api/subscriptions")
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 public class SubscriptionNotificationController {
 
-    private final SubscriptionNotificationService subscriptionNotificationService;
+    @Autowired
+    private SubscriptionNotificationService subscriptionNotificationService;
 
     @PostMapping("/check-expiring")
-    public ResponseEntity<String> checkExpiringSubscriptions() {
+    public ResponseEntity<ResponseDTO> checkExpiringSubscriptions() {
         try {
             subscriptionNotificationService.checkExpiringSubscriptions();
-            return ResponseEntity.ok("Vérification des abonnements expirants effectuée avec succès");
+            return ResponseEntity.ok(new ResponseDTO("success", "Vérification des abonnements expirants effectuée avec succès"));
         } catch (Exception e) {
-            return ResponseEntity.internalServerError()
-                    .body("Erreur lors de la vérification des abonnements: " + e.getMessage());
+            return ResponseEntity.badRequest().body(new ResponseDTO("error", "Erreur lors de la vérification des abonnements: " + e.getMessage()));
         }
     }
+
 } 

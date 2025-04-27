@@ -4,6 +4,7 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
 import com.stripe.param.PaymentIntentCreateParams;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.cloud_in_mypocket.dto.StripeResponseDTO;
@@ -77,11 +78,22 @@ public class PaiementController {
         }
     }
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("/users/{userId}/subscriptions")
     public ResponseEntity<List<Paiement>> getUserSubscriptions(@PathVariable Long userId) {
         return ResponseEntity.ok(paiementService.getUserSubscriptions(userId));
     }
-    @PostMapping("/paiements")
+
+    @GetMapping("/users/{userId}/active-subscription")
+    public ResponseEntity<Paiement> getActiveSubscription(@PathVariable Long userId) {
+        List<Paiement> subscriptions = paiementService.getUserSubscriptions(userId);
+        if (subscriptions.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        // Retourner le paiement le plus récent comme abonnement actif
+        return ResponseEntity.ok(subscriptions.get(0));
+    }
+
+    @PostMapping
     public ResponseEntity<Paiement> savePaiement(@RequestBody Paiement paiement) {
         Paiement savedPaiement = paiementService.savePaiement(paiement);
         return ResponseEntity.ok(savedPaiement);
