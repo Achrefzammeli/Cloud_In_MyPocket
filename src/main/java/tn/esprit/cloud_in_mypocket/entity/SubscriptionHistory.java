@@ -1,31 +1,41 @@
-package tn.esprit.cloud_in_mypocket.payload;
+package tn.esprit.cloud_in_mypocket.entity;
 
-import java.util.Map;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public class PaymentRequest {
-    private Long amount;
-    private String currency;
-    private Map<String, Object> metadata;
-    public Long getAmount() {
-        return amount;
-    }
+import java.time.LocalDate;
 
-    public void setAmount(Long amount) {
-        this.amount = amount;
-    }
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "subscription_history")
+public class SubscriptionHistory {
 
-    public String getCurrency() {
-        return currency;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-    public Map<String, Object> getMetadata() {
-        return metadata;
-    }
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user; // L'utilisateur qui a souscrit au pack
 
-    public void setMetadata(Map<String, Object> metadata) {
-        this.metadata = metadata;
+    @ManyToOne
+    @JoinColumn(name = "pack_id", nullable = false)
+    private PackAbonnement packAbonnement; // Le pack souscrit
+
+    private LocalDate startDate; // Date de début de la souscription
+    private LocalDate endDate; // Date de fin de la souscription
+
+    // Constructeur pour faciliter la création d'une entrée d'historique
+    public SubscriptionHistory(User user, PackAbonnement packAbonnement, LocalDate startDate, LocalDate endDate) {
+        this.user = user;
+        this.packAbonnement = packAbonnement;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 }
