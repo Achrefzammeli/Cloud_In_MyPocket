@@ -69,7 +69,7 @@ public class UserController {
         user.setAdresseLivraison(updatedUser.getAdresseLivraison());
         user.setRole(updatedUser.getRole());
 
-        user.setPackAbonnement(updatedUser.getPackAbonnement());
+        //user.setPackAbonnement(updatedUser.getPackAbonnement());
 
         // ✅ Ajoute cette ligne :
         user.setPhoto(updatedUser.getPhoto());
