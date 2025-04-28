@@ -110,7 +110,7 @@ public class PackAbonnementService  {
         logger.info("Fin de la mise à jour des statistiques");
     }
 
-    @Scheduled(cron = "0 0/30 * * * *") // Exécute chaque début d'heure
+  /*  @Scheduled(cron = "0 0/30 * * * *") // Exécute chaque début d'heure
     public void verifierPacksSansUtilisateurs() {
         List<PackAbonnement> packs = packAbonnementRepository.findAll();
         List<PackAbonnement> packsVides = packs.stream()
@@ -123,7 +123,7 @@ public class PackAbonnementService  {
             logger.info("✅ Tous les packs ont au moins un utilisateur.");
         }
 
-    }
+    } */
 
     public PackAbonnement updatePack(Long id, PackAbonnement updatedPack) {
         Optional<PackAbonnement> existingPackOpt = packAbonnementRepository.findById(id);

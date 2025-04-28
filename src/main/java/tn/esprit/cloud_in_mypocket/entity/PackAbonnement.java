@@ -32,9 +32,9 @@ public class PackAbonnement {
     @Enumerated(EnumType.STRING) // Stocker le type de pack sous forme de chaîne
     private PackType type; // Silver, Gold, Platinum
     // Relation avec l'entité User (un pack peut être souscrit par plusieurs utilisateurs)
-    @OneToMany(mappedBy = "packAbonnement", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnore
-    private List<User> users;
+   // @OneToMany(mappedBy = "packAbonnement", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+   // @JsonIgnore
+   // private List<User> users;
 
 
     // Relation avec l'entité Feedback (un pack peut avoir plusieurs feedbacks)

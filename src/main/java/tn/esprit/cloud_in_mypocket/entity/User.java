@@ -49,14 +49,14 @@ public class User {
     @Column(name = "is_active", nullable = false)
     private Boolean active = true;
 
-    @ManyToOne
+  /*  @ManyToOne
     @JoinColumn(name = "pack_abonnement_id")
     private PackAbonnement packAbonnement;
 
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<SubscriptionHistory> subscriptionHistory;
-
+*/
     @PrePersist
     public void prePersist() {
         if (role == null) {

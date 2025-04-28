@@ -3,6 +3,7 @@ package tn.esprit.cloud_in_mypocket.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import tn.esprit.cloud_in_mypocket.entity.Role;
 import tn.esprit.cloud_in_mypocket.entity.User;
 
 import java.time.LocalDateTime;
@@ -18,4 +19,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findInactiveUsersSince(@Param("date") LocalDateTime date);
 
     // Ajoute ici d'autres méthodes personnalisées si besoin...
+    List<User> findByRole(Role role); // Find all users by a role (example: all clients)
+
+    Optional<User> findByIdAndRole(Long id, Role role); // Find a specific user by ID AND role
 }
