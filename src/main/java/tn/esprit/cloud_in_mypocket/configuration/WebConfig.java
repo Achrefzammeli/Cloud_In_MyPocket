@@ -1,4 +1,4 @@
-package tn.esprit.cloud_in_mypocket.configuration;
+/*package tn.esprit.cloud_in_mypocket.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,3 +23,4 @@ public class WebConfig {
     }
 }
 
+*/
