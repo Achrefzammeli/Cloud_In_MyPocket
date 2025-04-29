@@ -19,6 +19,8 @@ public class SubscriptionHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private LocalDate startDate; // Date de début de la souscription
+    private LocalDate endDate; // Date de fin de la souscription
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -28,8 +30,6 @@ public class SubscriptionHistory {
     @JoinColumn(name = "pack_id", nullable = false)
     private PackAbonnement packAbonnement; // Le pack souscrit
 
-    private LocalDate startDate; // Date de début de la souscription
-    private LocalDate endDate; // Date de fin de la souscription
 
     // Constructeur pour faciliter la création d'une entrée d'historique
     public SubscriptionHistory(User user, PackAbonnement packAbonnement, LocalDate startDate, LocalDate endDate) {

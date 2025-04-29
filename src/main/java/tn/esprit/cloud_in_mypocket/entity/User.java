@@ -55,7 +55,7 @@ public class User {
 
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    //private List<SubscriptionHistory> subscriptionHistory;
+    private List<SubscriptionHistory> subscriptionHistory;
 
     @PrePersist
     public void prePersist() {

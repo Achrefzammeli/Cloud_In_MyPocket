@@ -35,7 +35,9 @@ public class SecurityConfig {
 
                         // WebSocket
                         .requestMatchers("/ws/**").permitAll()
-
+                        //ai
+                        .requestMatchers(HttpMethod.GET, "/api/ai/**").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/api/admin/dashboard/**").permitAll()
                         // Authentication & Registration
                         .requestMatchers(HttpMethod.POST,"/api/auth/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/users/register").permitAll()
