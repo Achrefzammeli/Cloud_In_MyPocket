@@ -18,4 +18,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findInactiveUsersSince(@Param("date") LocalDateTime date);
 
     // Ajoute ici d'autres méthodes personnalisées si besoin...
+    // Add this method to find users by role
+    List<User> findByRole(String role);
 }

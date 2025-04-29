@@ -51,11 +51,11 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "pack_abonnement_id")
-    private PackAbonnement packAbonnement;
+//    private PackAbonnement packAbonnement;
 
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<SubscriptionHistory> subscriptionHistory;
+    //private List<SubscriptionHistory> subscriptionHistory;
 
     @PrePersist
     public void prePersist() {
