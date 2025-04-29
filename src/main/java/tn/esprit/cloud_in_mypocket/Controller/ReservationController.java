@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/reservations")
+@RequestMapping("/api/reservations")
 //@CrossOrigin(origins = "*")
 public class ReservationController {
     @Autowired
@@ -125,12 +125,6 @@ public class ReservationController {
         long count = reservationRepository.countByFormationId(id);
         return ResponseEntity.ok(count);
     }
-
-
-
-
-
-
     @PutMapping("/{id}")
     public Reservation update(@PathVariable Long id, @RequestBody Reservation reservation) {
         return reservationService.updateReservation(id, reservation);

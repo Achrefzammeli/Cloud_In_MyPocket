@@ -83,6 +83,41 @@ public class SecurityConfig {
                         // Revenue prediction
                         .requestMatchers(HttpMethod.GET, "/api/revenue/predict").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/revenue/predict/**").permitAll()
+                        // Apprenants
+                        .requestMatchers(HttpMethod.GET, "/api/apprenants/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/apprenants/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/apprenants/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/api/apprenants/**").permitAll()
+
+                        // Formateurs
+                        .requestMatchers(HttpMethod.GET, "/api/formateur/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/formateur/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/formateur/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/api/formateur/**").permitAll()
+
+                        // Formations
+                        .requestMatchers(HttpMethod.GET, "/api/formations/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/formations/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/formations/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/api/formations/**").permitAll()
+                        //
+                        .requestMatchers(HttpMethod.GET, "/api/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/api/**").permitAll()
+
+                                // Reservations - Allow all users to access reservation endpoints
+                        // ✅ Reservations
+                        .requestMatchers(HttpMethod.GET, "/api/reservations/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/reservations/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/reservations/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/api/reservations/**").permitAll()
+
+                        // ✅ Seances
+                        .requestMatchers(HttpMethod.GET, "/api/seances/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/seances/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/seances/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/api/seances/**").permitAll()
 
                         // All other requests require authentication
                         .anyRequest().authenticated()

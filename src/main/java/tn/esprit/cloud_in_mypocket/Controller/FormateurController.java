@@ -1,6 +1,5 @@
 package tn.esprit.cloud_in_mypocket.Controller;
 
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.cloud_in_mypocket.entity.Formateur;
@@ -10,7 +9,7 @@ import java.util.List;
 
 @RestController
 //@CrossOrigin(origins = "*")
-@RequestMapping("/api")
+@RequestMapping("/api/formateur")
 public class FormateurController {
 
     @Autowired
@@ -27,7 +26,7 @@ public class FormateurController {
     }
 
     @PostMapping("/formateurs")
-    public Formateur create(@Valid @RequestBody Formateur formateur) {
+    public Formateur create( @RequestBody Formateur formateur) {
         return formateurService.createFormateur(formateur);
     }
 

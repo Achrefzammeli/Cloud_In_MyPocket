@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/seances")
+@RequestMapping("/api/seances")
 //@CrossOrigin(origins = "*")
 public class SeanceController {
     @Autowired
@@ -25,14 +25,14 @@ public class SeanceController {
 
     @Autowired
     private SeanceService seanceService;
-@Autowired
-private ApprenantRepository apprenantRepository;
-@Autowired
-private ApprenantService apprenantService;
-@Autowired
-private SeanceRepository seanceRepository;
-@Autowired
-private ReservationService reservationService;
+    @Autowired
+    private ApprenantRepository apprenantRepository;
+    @Autowired
+    private ApprenantService apprenantService;
+    @Autowired
+    private SeanceRepository seanceRepository;
+    @Autowired
+    private ReservationService reservationService;
     @GetMapping
     public List<Seance> getAll() {
         return seanceService.getAllSeances();
