@@ -72,6 +72,28 @@ public class ConsultationService {
         return consultationRepository.findConsultationsForDay(startOfDay, endOfDay);
     }
 
+    // Modified method to get consultations for a specific date range
+    public List<Consultation> getConsultationsForDateRange(LocalDateTime start, LocalDateTime end) {
+        System.out.println("Searching for consultations between " + start + " and " + end);
+        
+        // Use slotStart field for all queries
+        List<Consultation> consultations = consultationRepository.findBySlotStartBetween(start, end);
+        System.out.println("Found " + consultations.size() + " consultations by slotStart");
+        
+        // We can also try using the query method if the above didn't yield results
+        if (consultations.isEmpty()) {
+            try {
+                List<Consultation> queryConsultations = consultationRepository.findConsultationsForDay(start, end);
+                System.out.println("Found " + queryConsultations.size() + " consultations using custom query");
+                consultations.addAll(queryConsultations);
+            } catch (Exception e) {
+                System.out.println("Failed to execute custom query: " + e.getMessage());
+            }
+        }
+        
+        return consultations;
+    }
+
     // Advanced search with pagination
     public Page<Consultation> searchConsultations(ConsultationSearchCriteria criteria, Pageable pageable) {
         Specification<Consultation> spec = ConsultationSpecification.buildSpecification(criteria);

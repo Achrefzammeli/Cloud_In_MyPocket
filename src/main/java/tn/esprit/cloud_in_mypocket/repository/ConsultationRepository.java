@@ -14,20 +14,23 @@ import java.util.List;
 @Repository
 public interface ConsultationRepository extends JpaRepository<Consultation, Long>, JpaSpecificationExecutor<Consultation> {
     List<Consultation> findByDossier(Dossier dossier);
+    
+    // The following method exists and is fine
+    List<Consultation> findBySlotStartBetween(LocalDateTime start, LocalDateTime end);
+    
     List<Consultation> findByStatus(String status);
     
-    // Updated method names to use slotStart instead of dateHeure
+    // Keep these methods that use slotStart
     List<Consultation> findBySlotStartAfter(LocalDateTime dateTime);
     List<Consultation> findBySlotStartBefore(LocalDateTime dateTime);
     List<Consultation> findBySlotStartBeforeAndStatus(LocalDateTime dateTime, String status);
 
-    // Updated query to use slotStart instead of dateHeure
+    // Keep this query
     @Query("SELECT c FROM Consultation c WHERE c.slotStart >= ?1 AND c.slotStart < ?2")
     List<Consultation> findConsultationsForDay(LocalDateTime startOfDay, LocalDateTime endOfDay);
     
-    // Add method to prevent double-booking
+    // Methods for booking functionality
     boolean existsByLawyerAndSlotStartAndStatusNot(User lawyer, LocalDateTime slotStart, String cancelled);
     
-    // Add method to find all consultations for a lawyer within a time period
     List<Consultation> findAllByLawyerAndSlotStartBetween(User lawyer, LocalDateTime start, LocalDateTime end);
 }

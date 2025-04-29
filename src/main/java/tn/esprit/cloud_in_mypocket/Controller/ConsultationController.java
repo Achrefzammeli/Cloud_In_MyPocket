@@ -15,10 +15,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/consultations")
@@ -30,6 +34,18 @@ public class ConsultationController {
     
     @Autowired
     private SchedulingService schedulingService;
+
+    // Simple ping endpoint for API connection testing
+    @GetMapping("/ping")
+    public ResponseEntity<Map<String, String>> ping(@RequestParam(required = false) String date) {
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "success");
+        response.put("timestamp", LocalDateTime.now().toString());
+        if (date != null) {
+            response.put("receivedDate", date);
+        }
+        return ResponseEntity.ok(response);
+    }
 
     // Create a new consultation
     @PostMapping
@@ -147,6 +163,49 @@ public class ConsultationController {
                     put("error", "Error processing filter request");
                     put("message", e.getMessage());
                 }});
+        }
+    }
+
+    // Enhanced endpoint to get consultations for a specific date
+    @GetMapping("/by-date")
+    public ResponseEntity<List<ConsultationDTO>> getConsultationsForDate(@RequestParam String date) {
+        try {
+            System.out.println("Received request for consultations on date: " + date);
+            
+            // Parse the date manually with detailed error logging
+            LocalDate localDate;
+            try {
+                localDate = LocalDate.parse(date);
+            } catch (Exception e) {
+                System.err.println("Error parsing date: " + date + ". Error: " + e.getMessage());
+                e.printStackTrace();
+                return new ResponseEntity<>(Collections.emptyList(), HttpStatus.BAD_REQUEST);
+            }
+            
+            LocalDateTime startOfDay = localDate.atStartOfDay();
+            LocalDateTime endOfDay = localDate.atTime(LocalTime.MAX);
+            
+            System.out.println("Fetching consultations from " + startOfDay + " to " + endOfDay);
+            
+            // Try to find consultations using both slotStart and dateHeure fields
+            List<Consultation> consultations = consultationService.getConsultationsForDateRange(startOfDay, endOfDay);
+            
+            // Debugging: print each consultation found
+            System.out.println("Found " + consultations.size() + " consultations");
+            consultations.forEach(c -> System.out.println("  ID: " + c.getId() + 
+                                                         ", Subject: " + c.getSujet() + 
+                                                         ", Start: " + c.getSlotStart() + 
+                                                         ", Status: " + c.getStatus()));
+            
+            List<ConsultationDTO> consultationDTOs = consultations.stream()
+                    .map(ConsultationDTO::new)
+                    .collect(Collectors.toList());
+                    
+            return new ResponseEntity<>(consultationDTOs, HttpStatus.OK);
+        } catch (Exception e) {
+            System.err.println("Error fetching consultations: " + e.getMessage());
+            e.printStackTrace();
+            return new ResponseEntity<>(Collections.emptyList(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
