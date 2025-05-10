@@ -1,0 +1,36 @@
+name: Clone, Build, and Push Docker Image
+
+on:
+  push:
+    branches:
+      - main1  # Trigger on 'main1' branch only
+
+jobs:
+  clone-and-containerize:
+    runs-on: ubuntu-latest  # Use Ubuntu runner
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3  # Checkout the code from the repository
+
+    - name: Clone the repository to a new branch
+      run: |
+        git checkout -b cloned-backend-branch  # Create and checkout a new branch
+        git push origin cloned-backend-branch  # Push the new branch to GitHub
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v3  # Log in to Docker Hub
+      with:
+        username: 12mahe  # Direct username (not recommended)
+        password: mahekefi25507414  # Direct password (not recommended)
+
+    - name: Build and push backend image
+      uses: docker/build-push-action@v5  # Build and push Docker image
+      with:
+        context: ./backend  # Path to the backend directory (where the Dockerfile is located)
+        push: true  # Push the image to Docker Hub
+        tags: 12mahe/backend:latest  # Tag for the image
+
+    - name: Push new branch to GitHub
+      run: |
+        git push origin cloned-backend-branch  # Push the cloned branch back to GitHub
