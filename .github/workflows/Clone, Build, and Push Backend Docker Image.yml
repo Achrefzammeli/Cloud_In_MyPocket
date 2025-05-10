@@ -1,0 +1,35 @@
+name: Clone, Build, and Push Backend Docker Image
+
+on:
+  push:
+    branches:
+      - main1  # Trigger only on push to 'main1'
+  workflow_dispatch:  # Allow manual trigger from GitHub Actions UI
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4  # Get your repo code
+
+    - name: Create and push new cloned branch
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+        git checkout -b cloned-backend-branch
+        git push origin cloned-backend-branch
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ 12mahe }}  # Store in GitHub secrets
+        password: ${{ mahekefi25507414 }}
+
+    - name: Build and push backend image
+      uses: docker/build-push-action@v5
+      with:
+        context: ./backend  # Folder where your Dockerfile is
+        push: true
+        tags: 12mahe/backend:latest
