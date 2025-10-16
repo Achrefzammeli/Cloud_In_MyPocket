@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CloudInMyPocketApplication {
+public class LawappbackendApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CloudInMyPocketApplication.class, args);
+        SpringApplication.run(LawappbackendApplication.class, args);
     }
 
 }
